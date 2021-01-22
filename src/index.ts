@@ -4,6 +4,7 @@ dotenv.config({ path: __dirname+'/.env' });
 import route from './routes'
 const app = express();
 
+app.use(express.static(__dirname+'/build'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 

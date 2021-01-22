@@ -4,10 +4,11 @@
   "main": "build/server.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -p",
     "webpack": "NODE_ENV=development webpack --watch",
     "dev-server": "NODE_ENV=development nodemon build/server.js",
-    "start": "concurrently \"npm:dev-server\" \"npm:webpack\""
+    "start": "concurrently \"npm:dev-server\" \"npm:webpack\"",
+    "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
