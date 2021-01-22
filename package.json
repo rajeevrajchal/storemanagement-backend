@@ -8,7 +8,7 @@
     "webpack": "NODE_ENV=development webpack --watch",
     "dev-server": "NODE_ENV=development nodemon build/server.js",
     "start": "concurrently \"npm:dev-server\" \"npm:webpack\"",
-    "heroku-postbuild": "webpack"
+    "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
