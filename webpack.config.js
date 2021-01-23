@@ -2,11 +2,11 @@ const path = require('path');
 const nodeExternals = require("webpack-node-externals");
 
 const {
-    NODE_ENV = 'development',
+    NODE_ENV,
 } = process.env;
 
 const server = {
-    entry: './src/index.ts',
+    entry: "./src/utils/www.ts",
     mode: NODE_ENV,
     target: 'node',
     output: {
@@ -26,6 +26,6 @@ const server = {
     resolve: {
         extensions: ['.ts', '.js'],
     },
-    externals:[nodeExternals()]
+    externals: [nodeExternals()]
 }
 module.exports = [server];
