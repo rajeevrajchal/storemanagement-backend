@@ -7,7 +7,6 @@ const MONGODB_URI: any = process.env.MONGODB_URI
 
 const options: any = {
     useNewUrlParser: true,
-    useFindAndModify: false,
     useCreateIndex: true,
     useUnifiedTopology: true,
     promiseLibrary: global.Promise,

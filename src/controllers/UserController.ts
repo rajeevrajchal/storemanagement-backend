@@ -1,19 +1,21 @@
 import {NextFunction, Request, Response} from "express";
 import ErrorHandler from "../helpers/error";
+import User from "../models/User";
 
-export const register = (req: Request, res: Response, next: NextFunction) => {
+
+export const userInfo = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        console.log("hello world")
-        return res.status(200).json({
-            status: 'success',
-            users: {
-                "first_name": "Rajeev",
-                "last_name": "Rajchal",
-                "role": "super_admin"
-            }
-        });
+        const _id = req.params.id
+        const userInfo = await User.findById(_id);
+        if (userInfo) {
+            return res.status(200).json({
+                status: 'success',
+                users: userInfo
+            });
+        } else {
+            next(new ErrorHandler(400, "cannot store user"))
+        }
     } catch (e) {
-        console.log(e)
         next(new ErrorHandler(400, e.message))
     }
 }
