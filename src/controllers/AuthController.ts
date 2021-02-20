@@ -2,6 +2,7 @@ import {NextFunction, Request, Response} from "express";
 import ErrorHandler from "../helpers/error";
 import User from "../models/User";
 import jwt from "jsonwebtoken"
+import {throws} from "assert";
 
 const generateToken = (user) => {
     const secretkey = process.env.SECRET_KEY
@@ -52,9 +53,18 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
                 users: user
             });
         } else {
+            // res.status(400).json({
+            //     success: "false",
+            //     message:"cannot get user"
+            // });
             next(new ErrorHandler(400, "cannot store user"))
         }
     } catch (e) {
-        next(new ErrorHandler(400, e.message))
+        res.status(400).json({
+            success: "false",
+            message:e.message,
+            code: e.code
+        });
+       // throw new ErrorHandler(400, "cannot store user")
     }
 }

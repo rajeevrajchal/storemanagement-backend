@@ -7,7 +7,13 @@
     "build": "webpack -p",
     "webpack": "NODE_ENV=development webpack --watch",
     "dev-server": "NODE_ENV=development nodemon build/server.js",
-    "start": "concurrently \"npm:dev-server\" \"npm:webpack\"",
+    "dev": "concurrently \"npm:dev-server\" \"npm:webpack\"",
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
+    "start": "npm run serve",
+    "serve": "node build/server.js",
+    "watch-node": "nodemon build/server.js",
+    "watch-ts": "tsc -w",
     "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
@@ -16,15 +22,19 @@
     "@types/express": "^4.17.9",
     "@types/express-validator": "^3.0.0",
     "@types/jsonwebtoken": "^8.5.0",
+    "@types/swagger-ui-express": "^4.1.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.13"
+    "mongoose": "^5.11.13",
+    "swagger-jsdoc": "^6.0.2",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "@types/node": "^14.14.9",
+    "@types/swagger-jsdoc": "^6.0.0",
     "ts-loader": "^8.0.11",
     "typescript": "^4.1.2",
     "webpack": "^5.6.0",

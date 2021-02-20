@@ -13,7 +13,7 @@ export const userInfo = async (req: Request, res: Response, next: NextFunction) 
                 users: userInfo
             });
         } else {
-            next(new ErrorHandler(400, "cannot store user"))
+            next(new ErrorHandler(400, "cannot get user"))
         }
     } catch (e) {
         next(new ErrorHandler(400, e.message))
