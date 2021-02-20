@@ -4,7 +4,6 @@
   "main": "build/server.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack -p",
     "webpack": "NODE_ENV=development webpack --watch",
     "dev-server": "NODE_ENV=development nodemon build/server.js",
     "dev": "concurrently \"npm:dev-server\" \"npm:webpack\"",
