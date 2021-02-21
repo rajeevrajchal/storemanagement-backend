@@ -4,17 +4,16 @@
   "main": "build/server.js",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -p",
     "webpack": "NODE_ENV=development webpack --watch",
     "dev-server": "NODE_ENV=development nodemon build/server.js",
     "dev": "concurrently \"npm:dev-server\" \"npm:webpack\"",
-    "build-ts": "tsc",
+    "build-ts": "webpack",
     "postinstall": "npm run build-ts",
     "start": "npm run serve",
     "serve": "node build/server.js",
     "watch-node": "nodemon build/server.js",
-    "watch-ts": "tsc -w",
-    "heroku-postbuild": "webpack"
+    "watch-ts": "tsc -w"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
